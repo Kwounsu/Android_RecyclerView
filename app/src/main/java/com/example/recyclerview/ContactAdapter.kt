@@ -41,7 +41,8 @@ class ContactAdapter(private val contacts: ArrayList<Contact>) : RecyclerView.Ad
     // Animation
     private fun setAnimation(viewToAnimate: View) {
         if (viewToAnimate.animation == null) {
-            val animation = AnimationUtils.loadAnimation(viewToAnimate.context, android.R.anim.fade_in)
+            val animation =
+                AnimationUtils.loadAnimation(viewToAnimate.context, android.R.anim.slide_in_left)
             viewToAnimate.animation = animation
         }
     }
