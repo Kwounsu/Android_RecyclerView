@@ -7,13 +7,14 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ContactAdapter(val contacts: ArrayList<Contact>) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
+class ContactAdapter(private val contacts: ArrayList<Contact>) : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val contactName = itemView.findViewById<TextView>(R.id.contact_name_txt)
-        val isOnlineButton = itemView.findViewById<Button>(R.id.message_btn)
+        val contactName: TextView = itemView.findViewById(R.id.contact_name_txt)
+        val isOnlineButton: Button = itemView.findViewById(R.id.message_btn)
     }
 
+    // Create new ViewHolder when there is no ViewHolder available.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
@@ -25,8 +26,9 @@ class ContactAdapter(val contacts: ArrayList<Contact>) : RecyclerView.Adapter<Co
         return contacts.size
     }
 
+    // Bind data to the ViewHolder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val contact = contacts.get(position)
+        val contact = contacts[position]
         holder.contactName.text = contact.name
         holder.isOnlineButton.text = if (contact.isOnline) "Message" else "Offline"
         holder.isOnlineButton.isEnabled = contact.isOnline

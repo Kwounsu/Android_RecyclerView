@@ -11,14 +11,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Recyclerview object
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        // Initialize contacts
+
+        // Initialize contacts with creating data set
         val contacts = Contact.getContactsList(40)
-        // Create adapter passing in the sample user data
+
+        // Create adapter passing in the data set
         val adapter = ContactAdapter(contacts)
         // Attach the adapter to the recyclerview to populate items
         recyclerView.adapter = adapter
-        // Set layout manager to position the items
+
+        // Set layout manager
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView.layoutManager = layoutManager
