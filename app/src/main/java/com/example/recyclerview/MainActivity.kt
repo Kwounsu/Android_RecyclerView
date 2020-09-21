@@ -1,16 +1,10 @@
 package com.example.recyclerview
 
-import android.content.Context
-import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,27 +26,29 @@ class MainActivity : AppCompatActivity() {
 
         // Set layout manager
         val layoutManager = LinearLayoutManager(this)
-        layoutManager.orientation = LinearLayoutManager.VERTICAL
+//        val layoutManager = GridLayoutManager(this,3)
+//        val layoutManager = StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL)
+//        layoutManager.orientation = LinearLayoutManager.VERTICAL
         // Attach the layoutManager to the recyclerview
         recyclerView.layoutManager = layoutManager
         // ItemDecoration to add divider
-        // recyclerView.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
-        recyclerView.setDivider(R.drawable.divider)
+        recyclerView.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
+//        recyclerView.setDivider(R.drawable.divider)
     }
 
-    private fun RecyclerView.setDivider(@DrawableRes drawableRes: Int) {
-        val divider = DividerItemDecoration(
-            this.context,
-            DividerItemDecoration.VERTICAL
-        )
-        val drawable = ContextCompat.getDrawable(
-            this.context,
-            drawableRes
-        )
-        drawable?.let {
-            divider.setDrawable(it)
-            addItemDecoration(divider)
-        }
-    }
+//    private fun RecyclerView.setDivider(@DrawableRes drawableRes: Int) {
+//        val divider = DividerItemDecoration(
+//            this.context,
+//            DividerItemDecoration.VERTICAL
+//        )
+//        val drawable = ContextCompat.getDrawable(
+//            this.context,
+//            drawableRes
+//        )
+//        drawable?.let {
+//            divider.setDrawable(it)
+//            addItemDecoration(divider)
+//        }
+//    }
 
 }
